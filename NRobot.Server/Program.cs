@@ -78,9 +78,9 @@ namespace NRobot.Server
       //       try
 			// {
 	    //     	//start service
-			//     _serviceConfig = NRobotServerConfig.LoadXmlConfiguration();
-			// 	_service = new NRobotService(_serviceConfig);
-			// 	_service.StartAsync();
+			  _serviceConfig = NRobotServerConfig.LoadXmlConfiguration();
+			 	_service = new NRobotService(_serviceConfig);
+			 	_service.StartAsync();
 			// 	IsRunning = true;
 
 			// }

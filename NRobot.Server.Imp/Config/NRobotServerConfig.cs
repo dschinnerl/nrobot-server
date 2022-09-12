@@ -10,7 +10,7 @@ namespace NRobot.Server.Imp.Config
 	/// </summary>
 	public class NRobotServerConfig
 	{
-		
+
 
         public int Port { get; set; }
         public Dictionary<String, LibraryConfig> AssemblyConfigs = new Dictionary<String, LibraryConfig>();
@@ -37,17 +37,6 @@ namespace NRobot.Server.Imp.Config
             return result;
         }
 
-
-
-
-
-
-
-
-       
-		
-		
 	}
-	
-	
+
 }
