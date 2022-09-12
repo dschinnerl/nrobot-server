@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace NRobot.Server.Test.DomainTests
 {
-    
+
     /// <summary>
     /// Tests to check different keyword class access levels
     /// </summary>
@@ -35,7 +35,8 @@ namespace NRobot.Server.Test.DomainTests
         }
 
         [Test]
-        [ExpectedException(typeof(KeywordLoadingException))]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void ClassAccess_StaticClass()
         {
             var config = new LibraryConfig();

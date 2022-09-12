@@ -79,8 +79,9 @@ namespace NRobot.Server.Test.ServiceTests
             _service.StartAsync();
         }
 
-        [ExpectedException(typeof(KeywordLoadingException))]
         [Test]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void StartService_InvalidAssembly()
         {
             var config = new NRobotServerConfig();
@@ -96,8 +97,9 @@ namespace NRobot.Server.Test.ServiceTests
             _service.StartAsync();
         }
 
-        [ExpectedException(typeof(KeywordLoadingException))]
         [Test]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void StartService_InvalidType()
         {
             var config = new NRobotServerConfig();
@@ -113,8 +115,9 @@ namespace NRobot.Server.Test.ServiceTests
             _service.StartAsync();
         }
 
-        [ExpectedException(typeof(KeywordLoadingException))]
         [Test]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void StartService_InvalidDocumentation()
         {
             var config = new NRobotServerConfig();

@@ -72,8 +72,9 @@ namespace NRobot.Server.Test.ServiceTests
             Assert.Contains("INT RETURNTYPE",result);
         }
 
-        [ExpectedException(typeof(XmlRpcFaultException))]
         [Test]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(XmlRpcFaultException))]
         public void get_keyword_names_invalid_url()
         {
             var client = (IRemoteClient)XmlRpcProxyGen.Create(typeof(IRemoteClient));

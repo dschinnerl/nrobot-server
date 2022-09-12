@@ -30,7 +30,8 @@ namespace NRobot.Server.Test.DomainTests
         }
 
         [Test]
-        [ExpectedException(typeof(KeywordLoadingException))]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void LoadAssembly_WithUnknownAssembly()
         {
             //setup
@@ -44,7 +45,8 @@ namespace NRobot.Server.Test.DomainTests
         }
 
         [Test]
-        [ExpectedException(typeof(KeywordLoadingException))]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void LoadAssembly_WithUnknownType()
         {
             //setup
@@ -58,7 +60,8 @@ namespace NRobot.Server.Test.DomainTests
         }
 
         [Test]
-        [ExpectedException(typeof(KeywordLoadingException))]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void LoadAssembly_WithUnknownXMLDocumentation()
         {
             //setup
@@ -73,7 +76,8 @@ namespace NRobot.Server.Test.DomainTests
         }
 
         [Test]
-        [ExpectedException(typeof(KeywordLoadingException))]
+        // [ExpectedException(typeof(KeywordLoadingException))]
+        [TestCase("", ExpectedResult = typeof(KeywordLoadingException))]
         public void LoadAssembly_WithNullConfig()
         {
             //setup
