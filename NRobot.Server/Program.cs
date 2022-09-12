@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Diagnostics;
 // using System.Windows.Forms;
 using System.Reflection;
 using log4net;
+using log4net.Repository;
 using NRobot.Server.Imp;
 using NRobot.Server.Imp.Config;
 
@@ -15,7 +18,9 @@ namespace NRobot.Server
 	{
 
 		//log4net
-		private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+		// private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+		private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
 		/// <summary>
 		/// Program entry point.
@@ -23,7 +28,15 @@ namespace NRobot.Server
 		[STAThread]
 		private static void Main(string[] args)
 		{
+			// log4net.Config.BasicConfigurator.Configure();
+			Console.WriteLine("log4net");
+      ILoggerRepository repository = log4net.LogManager.GetRepository(Assembly.GetCallingAssembly());
+			// var fileInfo = new FileInfo(@"/Volumes/EXT256GB/Users/dietmar/Documents/Avocodo/Projects/KTM/robotframework-playground/nrobot-server/NRobot.Server/bin/Debug/netcoreapp3.1/log4net.config");
+			var fileInfo = new FileInfo(@"log4net.config");
+	    log4net.Config.XmlConfigurator.Configure(repository, fileInfo);
+
 			Log.Debug("Starting NRobot Server");
+
 			var trayapp = new TrayApplication();
 			// if (trayapp.IsRunning)
 			// {

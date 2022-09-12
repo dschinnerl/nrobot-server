@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Loader;
 using System.Reflection;
 using System.Xml.Linq;
 using System.IO;
@@ -45,6 +46,16 @@ namespace NRobot.Server.Imp.Domain
                 Log.Debug(String.Format("Loading keywords from type : {0}", config.TypeName));
 
                 //get instance
+
+                string fullPath = System.Reflection.Assembly.GetAssembly(typeof(KeywordManager)).Location;
+                string theDirectory = Path.GetDirectoryName( fullPath );
+
+                var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(
+                    theDirectory + "/" + @"NRobot.Server.Test.dll");
+                    // @"/Volumes/EXT256GB/Users/dietmar/Documents/Avocodo/Projects/KTM/robotframework-playground/nrobot-server/NRobot.Server/bin/Debug/netcoreapp3.1/NRobot.Server.Test.dll");
+                var myType = myAssembly.GetType(config.TypeName);
+                var myInstance = Activator.CreateInstance(myType);
+
                 var kwinstance = Activator.CreateInstance(config.Assembly, config.TypeName).Unwrap();
                 var kwtype = kwinstance.GetType();
 
@@ -84,7 +95,7 @@ namespace NRobot.Server.Imp.Domain
             }
         }
 
-        
+
         /// <summary>
         /// Checks method signature for keyword suitability
         /// </summary>
@@ -205,7 +216,7 @@ namespace NRobot.Server.Imp.Domain
         /// </summary>
         public RunKeywordResult RunKeyword(string typename, string friendlyname, object[] arguments)
         {
-            
+
             //setup
             var result = new RunKeywordResult();
             var timer = new Stopwatch();
@@ -266,7 +277,7 @@ namespace NRobot.Server.Imp.Domain
                 tracelistener.Flush();
                 Trace.Listeners.Remove(tracelistener);
                 result.KeywordOutput = System.Text.Encoding.Default.GetString(tracecontent.ToArray());
-                
+
                 //clean up
                 tracecontent.SetLength(0);
                 tracelistener.Dispose();
