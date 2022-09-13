@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Threading;
+using System;
 using System.IO;
 using log4net;
 using System.Security.Principal;
@@ -15,20 +16,20 @@ namespace NRobot.Server.Imp
 	{
 
 		private static readonly ILog Log = LogManager.GetLogger(typeof(NRobotService));
-        private HttpService _httpservice;
-	    private KeywordManager _keywordManager;
-	    private XmlRpcService _rpcService;
-	    private NRobotServerConfig _config;
+    private HttpService _httpservice;
+    private KeywordManager _keywordManager;
+    private XmlRpcService _rpcService;
+    private NRobotServerConfig _config;
 
 		public NRobotService(NRobotServerConfig config)
         {
             if (config == null) throw new Exception("No configuration specified");
-		    _config = config;
+		    		_config = config;
             _keywordManager = new KeywordManager();
             _rpcService = new XmlRpcService(_keywordManager);
+						// Log.Debug(String.Format("Listening on port {0}", config.Port));
             _httpservice = new HttpService(_rpcService, _keywordManager, config.Port);
             LoadKeywords();
-						Console.WriteLine("NRobotService done.");
         }
 
 
@@ -43,7 +44,7 @@ namespace NRobot.Server.Imp
 			{
 				foreach(var libraryconfig in _config.AssemblyConfigs)
 				{
-                  _keywordManager.AddLibrary(libraryconfig.Value);
+            _keywordManager.AddLibrary(libraryconfig.Value);
 				}
 			}
 			catch (Exception e)
@@ -66,7 +67,7 @@ namespace NRobot.Server.Imp
 			// 	throw new UnauthorizedAccessException("Service not started as administrator");
 			// }
 			_httpservice.StartAsync();
-            Log.Debug("HTTP listener started");
+      Log.Debug("HTTP listener started");
 		}
 
 		/// <summary>
@@ -75,7 +76,7 @@ namespace NRobot.Server.Imp
 		public void Stop()
 		{
 			_httpservice.Stop();
-            Log.Debug("HTTP listener stopped");
+      Log.Debug("HTTP listener stopped");
 		}
 
 		/// <summary>

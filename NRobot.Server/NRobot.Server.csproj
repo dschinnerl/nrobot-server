@@ -23,29 +23,13 @@
   </ItemGroup>
   <ItemGroup>
     <!--
-    <Compile Include="AboutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutForm.Designer.cs">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     -->
   </ItemGroup>
-  <!--
   <ItemGroup>
-    <EmbeddedResource Include="AboutForm.resx">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="app.config" />
-    <EmbeddedResource Include="logo.ico">
-      <LogicalName>LogoIcon</LogicalName>
-    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
   </ItemGroup>
-  -->
   <ItemGroup>
     <ProjectReference Include="..\NRobot.Server.Imp\NRobot.Server.Imp.csproj">
       <Project>{1BD61A13-DA09-477A-8A42-4072681DF950}</Project>

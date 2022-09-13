@@ -14,10 +14,10 @@ namespace NRobot.Server.Imp.Services
 	/// </summary>
 	public class HttpService
 	{
-		
+
 		//log4net
 		private static readonly ILog Log = LogManager.GetLogger(typeof(HttpService));
-		
+
 		//properties
 		private HttpListener _listener;
 		private Thread _httpthread;
@@ -25,7 +25,7 @@ namespace NRobot.Server.Imp.Services
 	    private KeywordManager _keywordManager;
 	    private int _port;
 
-		
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -39,7 +39,7 @@ namespace NRobot.Server.Imp.Services
 			﻿_listener.Prefixes.Add(String.Format("http://*:{0}/", _port));
             _httpthread = null;
 		}
-		
+
 		/// <summary>
 		/// Background HTTP Listener thread
 		/// </summary>
@@ -47,9 +47,9 @@ namespace NRobot.Server.Imp.Services
 		{
             Log.Debug(String.Format("HTTP Listener started on port {0}", _port));
             _listener.Start();
-			﻿while (true)
-		﻿  ﻿  ﻿{
-		﻿  ﻿  ﻿	try
+			while (true)
+		    {
+		    	try
 				{
 					var reqcontext = _listener.GetContext();
 					var method = reqcontext.Request.HttpMethod;
@@ -74,10 +74,10 @@ namespace NRobot.Server.Imp.Services
 				{
 					Log.Error(e.ToString());
 				}
-		﻿  ﻿  ﻿}
+		    }
             Log.Debug("HTTP listener thread has exited");
 		}
-		
+
 		/// <summary>
 		/// Processes a HTTP request
 		/// </summary>
@@ -95,7 +95,7 @@ namespace NRobot.Server.Imp.Services
                 context.Response.Close();
             }
 		}
-		
+
 		/// <summary>
 		/// Starts the http listener and processor async
 		/// </summary>
@@ -109,7 +109,7 @@ namespace NRobot.Server.Imp.Services
                 _httpthread.Start();
 			}
 		}
-		
+
 		/// <summary>
 		/// Stop http listener
 		/// </summary>
@@ -147,7 +147,7 @@ namespace NRobot.Server.Imp.Services
             }
             return inUse;
         }
-        
+
         /// <summary>
         /// Writes status page to a browser
         /// </summary>
@@ -178,7 +178,7 @@ namespace NRobot.Server.Imp.Services
                     }
         	        html.Append("</tbody></table>");
         	    }
-                
+
 	        	//finish html
 	        	html.Append("</body></html>");
         		response.StatusCode = 200;
@@ -192,7 +192,7 @@ namespace NRobot.Server.Imp.Services
         	}
         	response.Close();
         }
-		
-		
+
+
 	}
 }
