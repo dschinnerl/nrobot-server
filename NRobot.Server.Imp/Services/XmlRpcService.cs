@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net;﻿  ﻿
+using System.Net;
 using CookComputing.XmlRpc;
 using log4net;
 using NRobot.Server.Imp.Domain;
@@ -11,22 +11,22 @@ namespace NRobot.Server.Imp.Services
 {
 
 	/// <summary>
-﻿  	/// Class of XML-RPC methods for remote library (server)
-﻿  	/// that conforms to RobotFramework remote library API
-﻿  	/// </summary>
-﻿ 	public class XmlRpcService : XmlRpcListenerService, IRemoteService
-﻿  	{
-﻿  ﻿  	
+  	/// Class of XML-RPC methods for remote library (server)
+  	/// that conforms to RobotFramework remote library API
+  	/// </summary>
+ 	public class XmlRpcService : XmlRpcListenerService, IRemoteService
+  	{
+
 		//log4net
 		private static readonly ILog Log = LogManager.GetLogger(typeof(XmlRpcService));
-		
+
 		//constants
 		private const String CIntro = "__INTRO__";
 		private const String CInit = "__INIT__";
 
         //properties
 	    private KeywordManager _keywordManager;
-	    private ConcurrentDictionary<int, string> _threadkeywordtype; 
+	    private ConcurrentDictionary<int, string> _threadkeywordtype;
 
         //constructor
 	    public XmlRpcService(KeywordManager keywordManager)
@@ -59,28 +59,28 @@ namespace NRobot.Server.Imp.Services
 #region XmlRpcMethods
 
         /// <summary>
-	﻿  ﻿  /// Get a list of keywords available for use
-	﻿  ﻿  /// </summary>
-	﻿  ﻿  public string[] get_keyword_names()
-	  ﻿  ﻿{
-	﻿  ﻿  ﻿	try 
+	    /// Get a list of keywords available for use
+	    /// </summary>
+	    public string[] get_keyword_names()
+	    {
+	    	try
 			{
-                Log.Debug("XmlRpc Method call - get_keyword_names");
+          Log.Debug("XmlRpc Method call - get_keyword_names");
 			    var typename = _threadkeywordtype[Thread.CurrentThread.ManagedThreadId];
 			    return _keywordManager.GetKeywordNamesForType(typename);
 			}
 			catch (Exception e)
 			{
-				Log.Error(String.Format("Exception in method - get_keyword_names : {0}",e.Message));
+				Log.Error(String.Format("Exception in method - get_keyword_names : {0}", e.Message));
 				throw new XmlRpcFaultException(1,e.Message);
 			}
-	﻿  ﻿  }
-﻿  ﻿  
-	﻿  ﻿  /// <summary>
-	﻿  ﻿  /// Run specified Robot Framework keyword
-	﻿  ﻿  /// </summary>
-	﻿  ﻿  public XmlRpcStruct run_keyword(string keyword, object[] args)
-	  ﻿  ﻿{
+	    }
+
+	    /// <summary>
+	    /// Run specified Robot Framework keyword
+	    /// </summary>
+	    public XmlRpcStruct run_keyword(string keyword, object[] args)
+	    {
 			Log.Debug(String.Format("XmlRpc Method call - run_keyword {0}",keyword));
 			XmlRpcStruct kr = new XmlRpcStruct();
 			try
@@ -97,12 +97,12 @@ namespace NRobot.Server.Imp.Services
 			}
 			return kr;
 		}
-		
+
 		/// <summary>
-	﻿  ﻿  /// Get list of arguments for specified Robot Framework keyword.
-	﻿  ﻿  /// </summary>
-	﻿  ﻿  public string[] get_keyword_arguments(string friendlyname)
-	﻿  ﻿  {
+	    /// Get list of arguments for specified Robot Framework keyword.
+	    /// </summary>
+	    public string[] get_keyword_arguments(string friendlyname)
+	    {
             Log.Debug(String.Format("XmlRpc Method call - get_keyword_arguments {0}", friendlyname));
 			try
 			{
@@ -115,7 +115,7 @@ namespace NRobot.Server.Imp.Services
 				Log.Error(String.Format("Exception in method - get_keyword_arguments : {0}",e.Message));
 				throw new XmlRpcFaultException(1,e.Message);
 			}
-	﻿  ﻿  }
+	    }
 
 	    /// <summary>
 	    /// Get documentation for specified Robot Framework keyword.
@@ -124,11 +124,11 @@ namespace NRobot.Server.Imp.Services
 	    /// </summary>
 	    /// <returns>A documentation string for the given keyword.</returns>
 	    public string get_keyword_documentation(string friendlyname)
-	﻿  ﻿  {
-		﻿  ﻿ 	Log.Debug(String.Format("XmlRpc Method call - get_keyword_documentation {0}", friendlyname));
+	    {
+		   	Log.Debug(String.Format("XmlRpc Method call - get_keyword_documentation {0}", friendlyname));
 			try
 			{
-				//check for INTRO 
+				//check for INTRO
                 if (String.Equals(friendlyname, CIntro, StringComparison.CurrentCultureIgnoreCase))
 				{
                     return String.Empty;
@@ -136,7 +136,7 @@ namespace NRobot.Server.Imp.Services
 				//check for init
                 if (String.Equals(friendlyname, CInit, StringComparison.CurrentCultureIgnoreCase))
 				{
-					return String.Empty;    
+					return String.Empty;
 				}
 				//get keyword documentation
 			    var typename = _threadkeywordtype[Thread.CurrentThread.ManagedThreadId];
@@ -150,8 +150,8 @@ namespace NRobot.Server.Imp.Services
 				Log.Error(String.Format("Exception in method - get_keyword_documentation : {0}",e.Message));
 				throw new XmlRpcFaultException(1,e.Message);
 			}
-				
-	﻿  ﻿  }
+
+	    }
 
 
 #endregion

@@ -36,7 +36,7 @@ namespace NRobot.Server.Imp.Services
 		    _port = port;
             //setup http listener
 			_listener = new HttpListener();
-			﻿_listener.Prefixes.Add(String.Format("http://*:{0}/", _port));
+			_listener.Prefixes.Add(String.Format("http://*:{0}/", _port));
             _httpthread = null;
 		}
 
