@@ -64,8 +64,8 @@ namespace NRobot.Server
 			 	_service.StartAsync();
 
 				// Thread.Sleep(1); // hack
+				Console.WriteLine("Press <ENTER> to stop.");
 				Console.ReadLine(); // hack
-
 				Console.WriteLine("NRobotService done.");
 			// 	IsRunning = true;
 
