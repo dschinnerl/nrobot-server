@@ -54,45 +54,16 @@ namespace NRobot.Server
 		//constructor
 		public TrayApplication()
 		{
-      Console.WriteLine(String.Format("NRobot.Server version {0}",Assembly.GetExecutingAssembly().GetName().Version));
+	      Console.WriteLine(String.Format("NRobot.Server version {0}",Assembly.GetExecutingAssembly().GetName().Version));
 
-      //       try
-			// {
-	    //     	//start service
 			  _serviceConfig = NRobotServerConfig.LoadXmlConfiguration();
 			 	_service = new NRobotService(_serviceConfig);
 			 	_service.StartAsync();
 
-				// Thread.Sleep(1); // hack
 				Console.WriteLine("Press <ENTER> to stop.");
 				Console.ReadLine(); // hack
+			 	_service.Stop();
 				Console.WriteLine("NRobotService done.");
-			// 	IsRunning = true;
-
-			// }
-			// catch (Exception e)
-			// {
-			// 	MessageBox.Show(String.Format("Unable to start NRobot.Server: \n\n{0}",e.ToString()),"Error",MessageBoxButtons.OK);
-			// 	IsRunning = false;
-			// }
-
-		}
-
-		/// <summary>
-		/// Handles exit context menu click
-		/// </summary>
-		public void ExitOptionClick(object sender, EventArgs e)
-		{
-			// Application.Exit();
-		}
-
-		/// <summary>
-		/// Handles about context menu click
-		/// </summary>
-		public void AboutOptionClick(object sender, EventArgs e)
-		{
-			// var frm = new AboutForm();
-			// frm.ShowDialog();
 		}
 
 		/// <summary>
