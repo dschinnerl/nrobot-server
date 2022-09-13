@@ -52,7 +52,6 @@ namespace NRobot.Server.Imp.Domain
 
                 var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(
                     theDirectory + "/" + @"NRobot.Server.Test.dll");
-                    // @"/Volumes/EXT256GB/Users/dietmar/Documents/Avocodo/Projects/KTM/robotframework-playground/nrobot-server/NRobot.Server/bin/Debug/netcoreapp3.1/NRobot.Server.Test.dll");
                 var myType = myAssembly.GetType(config.TypeName);
                 var myInstance = Activator.CreateInstance(myType);
 

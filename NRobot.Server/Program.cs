@@ -27,7 +27,6 @@ namespace NRobot.Server
 		private static void Main(string[] args)
 		{
       ILoggerRepository repository = log4net.LogManager.GetRepository(Assembly.GetCallingAssembly());
-			// var fileInfo = new FileInfo(@"/Volumes/EXT256GB/Users/dietmar/Documents/Avocodo/Projects/KTM/robotframework-playground/nrobot-server/NRobot.Server/bin/Debug/netcoreapp3.1/log4net.config");
 			var fileInfo = new FileInfo(@"log4net.config");
 	    log4net.Config.XmlConfigurator.Configure(repository, fileInfo);
 
