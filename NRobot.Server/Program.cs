@@ -15,20 +15,17 @@ namespace NRobot.Server
 	internal sealed class Program
 	{
 
-		//log4net
-		// private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
 		private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
 		/// <summary>
 		/// Program entry point.
 		/// </summary>
-		[STAThread]
 		private static void Main(string[] args)
 		{
       ILoggerRepository repository = log4net.LogManager.GetRepository(Assembly.GetCallingAssembly());
 			var fileInfo = new FileInfo(@"log4net.config");
-	    log4net.Config.XmlConfigurator.Configure(repository, fileInfo);
+	    log4net.Config.XmlConfigurator.ConfigureAndWatch(repository, fileInfo);
 
 			Log.Debug("Starting NRobot Server");
 

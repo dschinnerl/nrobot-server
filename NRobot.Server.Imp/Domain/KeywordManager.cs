@@ -69,7 +69,7 @@ namespace NRobot.Server.Imp.Domain
                     }
                     else
                     {
-                        throw new Exception(String.Format("Xml documentation file not found : {0}", config.Documentation));
+                        throw new Exception(String.Format("Xml documentation file not found: {0}", config.Documentation));
                     }
                 }
 
@@ -86,12 +86,12 @@ namespace NRobot.Server.Imp.Domain
                     }
                 }
                 _loadedKeywords.Add(config.TypeName, keywords);
-                Log.Debug(String.Format("Loaded keywords : {0}", String.Join(",", keywords.Select(k => k.FriendlyName).ToArray())));
+                Log.Debug(String.Format("Loaded keywords: {0}", String.Join(",", keywords.Select(k => k.FriendlyName).ToArray())));
             }
             catch (Exception e)
             {
                 Log.Error(String.Format("Unable to load keyword library, {0}", e));
-                throw new KeywordLoadingException("Unable to load keyword library",e);
+                throw new KeywordLoadingException("Unable to load keyword library", e);
             }
         }
 
