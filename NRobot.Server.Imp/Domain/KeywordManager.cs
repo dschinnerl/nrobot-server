@@ -50,8 +50,9 @@ namespace NRobot.Server.Imp.Domain
                 string fullPath = System.Reflection.Assembly.GetAssembly(typeof(KeywordManager)).Location;
                 string theDirectory = Path.GetDirectoryName(fullPath);
 
-                var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(
-                    theDirectory + "/" + config.Assembly + ".dll");
+                string assemblyPath = theDirectory + "/" + config.Assembly + ".dll";
+                Log.Debug(String.Format("Trying to load assembly from path: {0}", assemblyPath));
+                var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath);
                 var myType = myAssembly.GetType(config.TypeName);
                 var myInstance = Activator.CreateInstance(myType);
 
