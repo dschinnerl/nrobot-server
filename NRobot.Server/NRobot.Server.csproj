@@ -9,9 +9,7 @@
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="log4net" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-    <PackageReference Include="System.Resources.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <!--
