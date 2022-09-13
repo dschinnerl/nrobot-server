@@ -43,15 +43,15 @@ namespace NRobot.Server.Imp.Domain
                     Log.Debug(String.Format("Type {0} is already loaded", config.TypeName));
                     return;
                 }
-                Log.Debug(String.Format("Loading keywords from type : {0}", config.TypeName));
+                Log.Debug(String.Format("Loading keywords from type: {0}", config.TypeName));
 
                 //get instance
 
                 string fullPath = System.Reflection.Assembly.GetAssembly(typeof(KeywordManager)).Location;
-                string theDirectory = Path.GetDirectoryName( fullPath );
+                string theDirectory = Path.GetDirectoryName(fullPath);
 
                 var myAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(
-                    theDirectory + "/" + @"NRobot.Server.Test.dll");
+                    theDirectory + "/" + config.Assembly + ".dll");
                 var myType = myAssembly.GetType(config.TypeName);
                 var myInstance = Activator.CreateInstance(myType);
 
