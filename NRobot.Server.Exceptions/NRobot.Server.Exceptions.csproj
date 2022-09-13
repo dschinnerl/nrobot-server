@@ -6,5 +6,8 @@
     <RootNamespace>NRobot.Server.Exceptions</RootNamespace>
     <AssemblyName>NRobot.Server.Exceptions</AssemblyName>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>NRobot</Company>
+    <Product>NRobot.Server.Exceptions</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 </Project>

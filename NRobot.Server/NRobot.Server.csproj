@@ -7,6 +7,9 @@
     <AssemblyName>NRobot.Server</AssemblyName>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <Company>NRobot</Company>
+    <Product>NRobot.Server</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />

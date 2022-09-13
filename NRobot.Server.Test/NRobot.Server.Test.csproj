@@ -6,6 +6,9 @@
     <RootNamespace>NRobot.Server.Test</RootNamespace>
     <AssemblyName>NRobot.Server.Test</AssemblyName>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>NRobot</Company>
+    <Product>NRobot.Server.Test</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL" />

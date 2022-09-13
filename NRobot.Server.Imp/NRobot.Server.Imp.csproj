@@ -6,6 +6,9 @@
     <RootNamespace>NRobot.Server.Imp</RootNamespace>
     <AssemblyName>NRobot.Server.Imp</AssemblyName>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>NRobot</Company>
+    <Product>NRobot.Server.Imp</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
