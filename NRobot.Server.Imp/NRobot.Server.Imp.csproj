@@ -19,7 +19,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CookComputing.XmlRPCv2" />
+    <PackageReference Include="CookComputing.XmlRPCv2" Version="2.5.0" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
